@@ -27,6 +27,11 @@ The library is designed to use in conjunction with NetworkExtension framework an
   s.osx.vendored_frameworks = 'OpenVPNXor.framework'
   s.source_files = 'Sources/**/*.{swift,h,m,mm}'
   s.public_header_files = 'Sources/**/*.h'
+  
+  # Add mbedTLS and LZ4 libraries for macOS
+  s.osx.vendored_libraries = 'Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/macos/*.a', 'Sources/OpenVPNAdapter/Libraries/Vendors/lz4/lib/macos/*.a'
+  s.osx.libraries = 'mbedcrypto', 'mbedtls', 'mbedx509', 'lz4'
+  
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.swift_version = '5.0'
